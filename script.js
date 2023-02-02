@@ -168,3 +168,57 @@ const percentages = [
   percentageOfWorld1(populations[populations.length - 1])
 ];
 console.log(percentages);
+
+//Basic Array Operations
+const neighbours = ['Argentina', 'Uruguay', 'Paraguay'];
+console.log(neighbours);
+
+neighbours.push('Utopia');
+console.log(neighbours);
+
+neighbours.pop()
+console.log(neighbours);
+
+if (!neighbours.includes('Germany')) {
+  console.log('Probably not a central European country');
+}
+
+neighbours[neighbours.indexOf('Uruguay')] = 'Republic of Uruguay';
+console.log(neighbours);
+
+//Objects 
+const myCountry = {
+  country: 'Brazil',
+  capital: 'Brasilia',
+  language: 'Portuguese',
+  population: 214,
+  neighbours: ['Argentina', 'Uruguay', 'Paraguay'],
+
+  describe: function () {
+    return `${this.country} has ${this.population}
+${this.language}-speaking people, ${this.neighbours.length} 
+neighbouring countries and a capital called ${this.capital}.`
+  },
+
+  checkIsland: function () {
+    this.isIsland = this.neighbours.length === 0 ? true : false;
+  }
+}
+
+//Dot vs Bracket Notation 
+
+// console.log(`${myCountry.country} has ${myCountry.population}
+// ${myCountry.language}-speaking people, ${myCountry.neighbours.length} 
+// neighbouring countries and a capital called ${myCountry.capital}`);
+
+myCountry.population += 2;
+console.log(myCountry.population);
+
+myCountry['population'] -= 2;
+console.log(myCountry.population);
+
+//Object Methods
+
+console.log(myCountry.describe());
+myCountry.checkIsland()
+console.log(myCountry);
