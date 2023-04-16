@@ -450,3 +450,113 @@ document.querySelector('button').addEventListener('click', function() {
 // Some_Variable
 //    calculate_AGE
 //  delayed_departure
+
+// Closer look at functions 
+// Coding challange #1 
+
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python ', '2: Rust', '3: C++'],
+
+//   answers: new Array(4).fill(0),
+//   registerNewAnswer() {
+//     const answer = Number(
+//       prompt(
+//         `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+//       )
+//     );
+//     console.log(answer);
+
+
+//     typeof answer === 'number' && 
+//       answer < this.answers.length &&
+//       this.answers[answer]++;
+
+//     console.log(this.answers);
+
+//     this.displayResults();
+//     this.displayResults('string');
+//   },
+
+
+//   displayResults(type = 'array') {
+//       if(type === 'array') {
+//           console.log(this.answers);
+//       } else if (type === 'string') {
+//           console.log(`Poll results are ${this.answers.join(', ')}`)
+//       };
+//   },
+// };
+
+// document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
+
+// poll.displayResults.call({answers: [5, 2, 3]}, 'string');
+
+
+//coding challange #2
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function() {
+    header.style.color = 'blue';
+  })
+})();
+
+// Working with arrays
+// Coding Challenge #1
+
+/* 
+Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners about their dog's age, and stored the data into an array (one array for each). For now, they are just interested in knowing whether a dog is an adult or a puppy. A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years old.
+
+Create a function 'checkDogs', which accepts 2 arrays of dog's ages ('dogsJulia' and 'dogsKate'), and does the following things:
+
+1. Julia found out that the owners of the FIRST and the LAST TWO dogs actually have cats, not dogs! So create a shallow copy of Julia's array, and remove the cat ages from that copied array (because it's a bad practice to mutate function parameters)
+2. Create an array with both Julia's (corrected) and Kate's data
+3. For each remaining dog, log to the console whether it's an adult ("Dog number 1 is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy 🐶")
+4. Run the function for both test datasets
+
+HINT: Use tools from all lectures in this section so far 😉
+
+TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
+TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+
+const checkDogs = function(dogsJulia, dogsKate) {
+  const dogsJuliaCorrected = dogsJulia.slice();
+  dogsJuliaCorrected.splice(0, 1);
+  dogsJuliaCorrected.splice(-2);
+
+  const dogs = dogsJuliaCorrected.concat(dogsKate);
+  console.log(dogs);
+
+  dogs.forEach(function(dog, i) {
+    if(dog >= 3) {
+      console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
+    } else {
+      console.log(`Dog number ${i + 1} is still a puppy`);
+    }
+  });
+};
+
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+
+console.log(`----------------------------------------`)
+// Coding challange #2
+
+const calcAverageHumanAge = function(ages) {
+  const humanAges = ages.map(age => age <= 2 ? 2 * 
+  age : 16 + age * 4);
+  const adults = humanAges.filter(age => age >= 18);
+  console.log(humanAges);
+  console.log(adults);
+
+  const average = adults.reduce((acc, age) => acc + age, 0) / adults.length
+
+  return average
+};
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+console.log(avg1)
