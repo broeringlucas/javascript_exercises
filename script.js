@@ -662,6 +662,7 @@ class CarCl {
   brake() {
     this.speed -= 10;
     console.log(`${this.speed} km/h`);
+    return this;
   }
 
   get speedUS() {
@@ -705,3 +706,31 @@ car4.accelerate();
 car4.brake();
 car4.chargeBattery(90);
 console.log(car4.charge);
+
+class EVCl extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge -= 1;
+    console.log(
+      `${this.make} going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }%`
+    );
+    return this;
+  }
+}
+
+car5 = new EVCl("Rivian", 120, 23);
+car5.accelerate().brake().chargeBattery(100).accelerate();
+console.log(car5.speedUS);
