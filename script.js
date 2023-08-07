@@ -734,3 +734,20 @@ class EVCl extends CarCl {
 car5 = new EVCl("Rivian", 120, 23);
 car5.accelerate().brake().chargeBattery(100).accelerate();
 console.log(car5.speedUS);
+
+// 1
+// const whereAmI = function (lat, lng) {
+//   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json.`)
+//     .then((res) => {
+//       if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
+
+//       return res.json();
+//     })
+//     .then((data) => {
+//       console.log(data);
+//       console.log(`You are in ${data.city}, ${data.country}`);
+//     })
+//     .catch((err) => console.error(`${err.message}`));
+// };
+
+// whereAmI(`-33.933`, `18.474`);
